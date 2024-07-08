@@ -87,10 +87,11 @@ void PermissionHandlerWindowsPlugin::RegisterWithRegistrar(
 }
 
 PermissionHandlerWindowsPlugin::PermissionHandlerWindowsPlugin(){
-  m_positionChangedRevoker = geolocator.PositionChanged(winrt::auto_revoke,
-    [this](Geolocator const& geolocator, PositionChangedEventArgs e)
-    {
-    });
+  // 移除一开始就订阅位置的逻辑,网卡操作导致用户游戏变卡
+  // m_positionChangedRevoker = geolocator.PositionChanged(winrt::auto_revoke,
+  //   [this](Geolocator const& geolocator, PositionChangedEventArgs e)
+  //   {
+  //   });
 }
 
 PermissionHandlerWindowsPlugin::~PermissionHandlerWindowsPlugin() = default;
